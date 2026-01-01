@@ -39,8 +39,8 @@
 - [x] 26. 절대 경로(Alias) 설정 (vite.config.ts)
 - [x] 27. 폴더 구조 생성 (components, pages, hooks, utils 등)
 - [x] 28. React Query Client 설정 (main.tsx)
-- [ ] 29. 첫 커밋 및 GitHub 리포지토리 연결 준비
-- [ ] 30. 개발 서버 실행 및 정상 작동 확인
+- [x] 29. 첫 커밋 및 GitHub 리포지토리 연결 준비
+- [x] 30. 개발 서버 실행 및 정상 작동 확인
 
 ## Phase 2: 레이아웃 및 공통 컴포넌트 (31-70)
 - [ ] 31. 전역 테마(Color, Font) 정의
