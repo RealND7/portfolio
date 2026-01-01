@@ -31,10 +31,10 @@
 - [x] 18. Prettier 설정 추가
 - [x] 19. ESLint 설정 점검 및 규칙 추가
 - [x] 20. 필요한 라이브러리 설치 (react-router-dom)
-- [ ] 21. 필요한 라이브러리 설치 (tanstack/react-query)
-- [ ] 22. 필요한 라이브러리 설치 (@monaco-editor/react)
-- [ ] 23. 필요한 라이브러리 설치 (framer-motion 등 애니메이션)
-- [ ] 24. 필요한 라이브러리 설치 (react-icons)
+- [x] 21. 필요한 라이브러리 설치 (tanstack/react-query)
+- [x] 22. 필요한 라이브러리 설치 (@monaco-editor/react)
+- [x] 23. 필요한 라이브러리 설치 (framer-motion 등 애니메이션)
+- [x] 24. 필요한 라이브러리 설치 (react-icons)
 - [ ] 25. 환경 변수 파일(.env) 설정
 - [ ] 26. 절대 경로(Alias) 설정 (vite.config.ts)
 - [ ] 27. 브라우저 라우터 기본 설정 (App.tsx)
