@@ -29,7 +29,7 @@
 - [x] 16. Tailwind 설정 파일(tailwind.config.js) 커스터마이징 (Tailwind 4는 CSS로 설정)
 - [x] 17. 기본 CSS 초기화 (index.css)
 - [x] 18. Prettier 설정 추가
-- [ ] 19. ESLint 설정 점검 및 규칙 추가
+- [x] 19. ESLint 설정 점검 및 규칙 추가
 - [ ] 20. 필요한 라이브러리 설치 (react-router-dom)
 - [ ] 21. 필요한 라이브러리 설치 (tanstack/react-query)
 - [ ] 22. 필요한 라이브러리 설치 (@monaco-editor/react)
