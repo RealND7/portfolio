@@ -30,7 +30,7 @@
 - [x] 17. 기본 CSS 초기화 (index.css)
 - [x] 18. Prettier 설정 추가
 - [x] 19. ESLint 설정 점검 및 규칙 추가
-- [ ] 20. 필요한 라이브러리 설치 (react-router-dom)
+- [x] 20. 필요한 라이브러리 설치 (react-router-dom)
 - [ ] 21. 필요한 라이브러리 설치 (tanstack/react-query)
 - [ ] 22. 필요한 라이브러리 설치 (@monaco-editor/react)
 - [ ] 23. 필요한 라이브러리 설치 (framer-motion 등 애니메이션)
