@@ -37,7 +37,7 @@
 - [x] 24. 필요한 라이브러리 설치 (react-icons)
 - [x] 25. 환경 변수 파일(.env) 설정
 - [x] 26. 절대 경로(Alias) 설정 (vite.config.ts)
-- [ ] 27. 폴더 구조 생성 (components, pages, hooks, utils 등)
+- [x] 27. 폴더 구조 생성 (components, pages, hooks, utils 등)
 - [ ] 28. React Query Client 설정 (main.tsx)
 - [ ] 29. 첫 커밋 및 GitHub 리포지토리 연결 준비
 - [ ] 30. 개발 서버 실행 및 정상 작동 확인
