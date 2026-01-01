@@ -24,9 +24,9 @@
 - [x] 11. Node.js 및 npm 버전 확인
 - [x] 12. Vite를 사용하여 React 프로젝트 생성 (TypeScript 권장)
 - [x] 13. 프로젝트 폴더 구조 정리
-- [ ] 14. Git 저장소 초기화 및 .gitignore 설정
-- [ ] 15. Tailwind CSS 설치 및 초기화
-- [ ] 16. Tailwind 설정 파일(tailwind.config.js) 커스터마이징
+- [x] 14. Git 저장소 초기화 및 .gitignore 설정
+- [x] 15. Tailwind CSS 설치 및 초기화
+- [x] 16. Tailwind 설정 파일(tailwind.config.js) 커스터마이징 (Tailwind 4는 CSS로 설정)
 - [ ] 17. 기본 CSS 초기화 (index.css)
 - [ ] 18. Prettier 설정 추가
 - [ ] 19. ESLint 설정 점검 및 규칙 추가
