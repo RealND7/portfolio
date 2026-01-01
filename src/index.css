@@ -1,5 +1,36 @@
 @import 'tailwindcss';
 
+/* 전역 테마 CSS 변수 정의 */
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #3b82f6;
+    --color-primary-dark: #1e40af;
+    --color-primary-light: #dbeafe;
+
+    /* Secondary Colors */
+    --color-secondary: #10b981;
+    --color-secondary-dark: #047857;
+    --color-secondary-light: #d1fae5;
+
+    /* Neutral Colors */
+    --color-bg-light: #ffffff;
+    --color-bg-dark: #0f172a;
+    --color-text-light: #1f2937;
+    --color-text-dark: #f3f4f6;
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+  }
+}
+
 /* 기본 CSS 초기화 */
 * {
   margin: 0;
