@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: portfolio-backend
+  
+  datasource:
+    # 개발용 H2 데이터베이스 (메모리)
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    
+    # 운영용 MySQL (주석 처리)
+    # url: jdbc:mysql://localhost:3306/portfolio?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    # username: root
+    # password: your_password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    # database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8080
+
+jwt:
+  secret: your_jwt_secret_key_must_be_at_least_32_bytes_long_for_security
+  expiration: 86400000 # 24 hours
