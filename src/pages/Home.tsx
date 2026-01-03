@@ -1,22 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
-import { homeApi, skillsApi } from '../api';
+import { homeApi } from '../api';
 
 const Home = () => {
   const [homeData, setHomeData] = useState<any>(null);
-  const [skills, setSkills] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [homeRes, skillsRes] = await Promise.all([
-          homeApi.get(),
-          skillsApi.getAll()
-        ]);
+        const homeRes = await homeApi.get();
         setHomeData(homeRes.data);
-        setSkills(skillsRes.data);
       } catch (error) {
         console.error("Failed to fetch data", error);
       } finally {
