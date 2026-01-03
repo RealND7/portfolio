@@ -118,7 +118,7 @@ const Projects = () => {
                         <p className="text-white">{project.year} / {project.service}</p>
                       </div>
                       <button 
-                        onClick={() => navigate(`/projects/${project._id}`)}
+                        onClick={() => navigate(`/projects/${project.id}`)}
                         className="flex items-center gap-2 text-white font-bold hover:gap-4 transition-all group mt-4"
                       >
                         VIEW PROJECT 

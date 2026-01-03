@@ -141,7 +141,7 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
           <div className="flex flex-wrap gap-4">
             {skills.map((skill) => (
               <div 
-                key={skill.name}
+                key={skill.id}
                 className="w-28 h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors cursor-default"
               >
                 <span className="font-bold text-sm text-center px-2">{skill.name}</span>

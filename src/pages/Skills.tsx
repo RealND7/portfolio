@@ -55,11 +55,11 @@ const Skills = () => {
             <div className="mt-1">
               {skills.map((skill) => (
                 <div
-                  key={skill._id}
+                  key={skill.id}
                   onClick={() => handleSkillClick(skill)}
                   className={`
                     flex items-center gap-2 px-6 py-1 cursor-pointer text-sm transition-colors
-                    ${selectedSkill?._id === skill._id ? 'bg-[#37373d] text-white' : 'hover:bg-[#2a2d2e] text-gray-400'}
+                    ${selectedSkill?.id === skill.id ? 'bg-[#37373d] text-white' : 'hover:bg-[#2a2d2e] text-gray-400'}
                   `}
                 >
                   <FileCode2 className={`w-4 h-4 ${

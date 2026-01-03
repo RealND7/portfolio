@@ -4,19 +4,20 @@ spring:
   
   datasource:
     # 개발용 H2 데이터베이스 (메모리)
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    # url: jdbc:h2:mem:testdb
+    # driverClassName: org.h2.Driver
+    # username: sa
+    # password:
     
-    # 운영용 MySQL (주석 처리)
-    # url: jdbc:mysql://localhost:3306/portfolio?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    # username: root
-    # password: your_password
+    # 운영용 MySQL
+    url: jdbc:mysql://localhost:3306/portfolio?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: portfolio_user
+    password: portfolio_password
+    driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    # database-platform: org.hibernate.dialect.MySQL8Dialect
+    # database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true

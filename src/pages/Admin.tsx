@@ -126,8 +126,8 @@ const Admin = () => {
   const handleSaveProject = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (editingProject._id) {
-        await projectsApi.update(editingProject._id, editingProject);
+      if (editingProject.id) {
+        await projectsApi.update(editingProject.id, editingProject);
       } else {
         await projectsApi.create(editingProject);
       }
@@ -153,8 +153,8 @@ const Admin = () => {
   const handleSaveSkill = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (editingSkill._id) {
-        await skillsApi.update(editingSkill._id, editingSkill);
+      if (editingSkill.id) {
+        await skillsApi.update(editingSkill.id, editingSkill);
       } else {
         await skillsApi.create(editingSkill);
       }
@@ -211,14 +211,14 @@ const Admin = () => {
     formData.append('image', file);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/home/upload', formData, {
+      const response = await axios.post('/api/home/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       
-      // Assuming the server returns the relative path, we prepend the server URL
-      const imageUrl = `http://localhost:5000${response.data.imageUrl}`;
+      // Assuming the server returns the relative path
+      const imageUrl = response.data.imageUrl;
       setHomeData({ ...homeData, profileImage: imageUrl });
     } catch (error) {
       console.error('Image upload failed:', error);
@@ -272,7 +272,7 @@ const Admin = () => {
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={stats.dailyStats}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="_id" stroke="#9CA3AF" />
+                <XAxis dataKey="date" stroke="#9CA3AF" />
                 <YAxis stroke="#9CA3AF" />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }}
@@ -320,7 +320,7 @@ const Admin = () => {
             </thead>
             <tbody className="divide-y divide-gray-700">
               {stats.logs.map((log: any) => (
-                <tr key={log._id} className="hover:bg-gray-700/30 transition-colors">
+                <tr key={log.id} className="hover:bg-gray-700/30 transition-colors">
                   <td className="px-6 py-4 text-sm text-gray-300">{new Date(log.timestamp).toLocaleTimeString()}</td>
                   <td className="px-6 py-4 text-sm font-mono text-blue-400">{log.ip}</td>
                   <td className="px-6 py-4 text-sm text-gray-300">{log.page}</td>
@@ -537,7 +537,7 @@ const Admin = () => {
 
       {editingProject ? (
         <form onSubmit={handleSaveProject} className="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-          <h3 className="text-xl font-bold mb-4">{editingProject._id ? '프로젝트 수정' : '새 프로젝트'}</h3>
+          <h3 className="text-xl font-bold mb-4">{editingProject.id ? '프로젝트 수정' : '새 프로젝트'}</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-400 mb-1">프로젝트명</label>
@@ -601,7 +601,7 @@ const Admin = () => {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {projects.map(project => (
-            <div key={project._id} className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex justify-between items-center">
+            <div key={project.id} className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex justify-between items-center">
               <div>
                 <h3 className="font-bold text-lg">{project.title}</h3>
                 <p className="text-gray-400 text-sm">{project.client} • {project.year}</p>
@@ -614,7 +614,7 @@ const Admin = () => {
                   <Edit className="w-4 h-4" />
                 </button>
                 <button 
-                  onClick={() => handleDeleteProject(project._id)}
+                  onClick={() => handleDeleteProject(project.id)}
                   className="p-2 bg-red-600/20 text-red-400 rounded hover:bg-red-600/30"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -645,7 +645,7 @@ const Admin = () => {
 
       {editingSkill ? (
         <form onSubmit={handleSaveSkill} className="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-          <h3 className="text-xl font-bold mb-4">{editingSkill._id ? '스킬 수정' : '새 스킬'}</h3>
+          <h3 className="text-xl font-bold mb-4">{editingSkill.id ? '스킬 수정' : '새 스킬'}</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-400 mb-1">스킬명</label>
@@ -698,7 +698,7 @@ const Admin = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {skills.map(skill => (
-            <div key={skill._id} className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex justify-between items-center">
+            <div key={skill.id} className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-gray-700 rounded">
                   <Code2 className="w-5 h-5 text-gray-400" />
@@ -716,7 +716,7 @@ const Admin = () => {
                   <Edit className="w-4 h-4" />
                 </button>
                 <button 
-                  onClick={() => handleDeleteSkill(skill._id)}
+                  onClick={() => handleDeleteSkill(skill.id)}
                   className="p-2 bg-red-600/20 text-red-400 rounded hover:bg-red-600/30"
                 >
                   <Trash2 className="w-4 h-4" />
