@@ -137,23 +137,25 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mt-16 md:mt-24"
+          className="mt-16 md:mt-24 overflow-hidden"
         >
           <div className="flex items-baseline gap-3 mb-6 md:mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">Skills</h2>
             <span className="text-sm md:text-base text-gray-400 font-medium">보유역량</span>
           </div>
           
-          <div className="flex flex-wrap gap-3 md:gap-4">
-            {skills.map((skill) => (
-              <div 
-                key={skill.id}
-                className="w-24 h-24 md:w-28 md:h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors cursor-default"
-              >
-                <span className="font-bold text-xs md:text-sm text-center px-2">{skill.name}</span>
-                <span className="text-sm text-gray-500">{skill.level}</span>
-              </div>
-            ))}
+          <div className="relative w-full">
+            <div className="flex gap-4 animate-scroll w-max">
+              {[...STATIC_SKILLS, ...STATIC_SKILLS].map((skill, index) => (
+                <div 
+                  key={`${skill.name}-${index}`}
+                  className="w-24 h-24 md:w-28 md:h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-1 bg-white flex-shrink-0"
+                >
+                  <span className="font-bold text-xs md:text-sm text-center px-1 break-words w-full">{skill.name}</span>
+                  <span className="text-sm font-medium text-gray-900">{skill.level}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
@@ -161,5 +163,19 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
     </div>
   );
 };
+
+const STATIC_SKILLS = [
+  { name: "PowerPoint", level: "상" },
+  { name: "Excel", level: "상" },
+  { name: "Figma", level: "상" },
+  { name: "Photoshop", level: "상" },
+  { name: "HTML5", level: "상" },
+  { name: "CSS3", level: "상" },
+  { name: "JavaScript", level: "상" },
+  { name: "TypeScript", level: "중" },
+  { name: "React", level: "중" },
+  { name: "Tailwind", level: "중" },
+  { name: "Node.js", level: "중" },
+];
 
 export default Home;
