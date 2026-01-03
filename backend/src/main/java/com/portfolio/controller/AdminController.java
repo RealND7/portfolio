@@ -24,7 +24,7 @@ public class AdminController {
     private String jwtSecret;
 
     // 간단한 비밀번호 하드코딩 (실제 운영시에는 DB나 환경변수 사용 권장)
-    private final String ADMIN_PASSWORD = "admin_password_123"; 
+    private final String ADMIN_PASSWORD = "admin1234"; 
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
