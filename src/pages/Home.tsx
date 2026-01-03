@@ -147,11 +147,11 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
             <span className="text-sm md:text-base text-gray-400 font-medium">보유역량</span>
           </div>
           
-          <motion.div ref={carouselRef} className="cursor-grab overflow-hidden py-10 px-4" whileTap={{ cursor: "grabbing" }}>
+          <motion.div ref={carouselRef} className="cursor-grab overflow-hidden" whileTap={{ cursor: "grabbing" }}>
             <motion.div 
               drag="x" 
               dragConstraints={{ right: 0, left: -width }} 
-              className="flex gap-4 w-max"
+              className="flex gap-4 w-max py-10 px-4"
             >
               {STATIC_SKILLS.map((skill, index) => (
                 <div 
@@ -173,17 +173,17 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
 };
 
 const STATIC_SKILLS = [
-  { name: "PowerPoint", level: "상", icon: "https://img.icons8.com/color/144/microsoft-powerpoint-2019--v1.png", color: "B7472A" },
-  { name: "Excel", level: "상", icon: "https://img.icons8.com/color/144/microsoft-excel-2019--v1.png", color: "217346" },
-  { name: "Figma", level: "상", icon: "https://img.icons8.com/color/96/figma--v1.png", color: "F24E1E" },
-  { name: "Photoshop", level: "상", icon: "https://img.icons8.com/color/96/adobe-photoshop--v1.png", color: "31A8FF" },
-  { name: "HTML5", level: "상", icon: "https://img.icons8.com/color/96/html-5--v1.png", color: "E34F26" },
-  { name: "CSS3", level: "상", icon: "https://img.icons8.com/color/96/css3.png", color: "1572B6" },
-  { name: "JavaScript", level: "상", icon: "https://img.icons8.com/color/96/javascript--v1.png", color: "F7DF1E" },
-  { name: "TypeScript", level: "중", icon: "https://img.icons8.com/color/96/typescript.png", color: "3178C6" },
-  { name: "React", level: "중", icon: "https://img.icons8.com/color/96/react-native.png", color: "61DAFB" },
-  { name: "Tailwind", level: "중", icon: "https://img.icons8.com/color/96/tailwindcss.png", color: "06B6D4" },
-  { name: "Node.js", level: "중", icon: "https://img.icons8.com/color/96/nodejs.png", color: "339933" },
+  { name: "PowerPoint", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_powerpoint.svg", color: "B7472A" },
+  { name: "Excel", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_excel.svg", color: "217346" },
+  { name: "Figma", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_figma.svg", color: "F24E1E" },
+  { name: "Photoshop", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_photoshop.svg", color: "31A8FF" },
+  { name: "HTML5", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_html.svg", color: "E34F26" },
+  { name: "CSS3", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_css.svg", color: "1572B6" },
+  { name: "JavaScript", level: "상", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_js_official.svg", color: "F7DF1E" },
+  { name: "TypeScript", level: "중", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_typescript_official.svg", color: "3178C6" },
+  { name: "React", level: "중", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_reactjs.svg", color: "61DAFB" },
+  { name: "Tailwind", level: "중", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_tailwind.svg", color: "06B6D4" },
+  { name: "Node.js", level: "중", icon: "https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_node.svg", color: "339933" },
 ];
 
 export default Home;
