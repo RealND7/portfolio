@@ -41,7 +41,7 @@ const Home = () => {
             <div className="h-[1px] w-12 bg-gray-400"></div>
             <span className="text-gray-500 tracking-widest font-medium">PORTFOLIO</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-[#2B4C7E] tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black text-[#2B4C7E] tracking-tighter break-words">
             {homeData?.heroTitle || "WEB PROFESSIONAL"}
           </h1>
           <p className="text-2xl text-gray-600 mt-4">{homeData?.heroSubtitle || "Full Stack Developer"}</p>
