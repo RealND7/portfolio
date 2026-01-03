@@ -119,13 +119,9 @@ const Home = () => {
                 {/* Image Placeholder */}
                 <div className="w-40 h-56 md:w-48 md:h-64 bg-gray-200 mb-6 md:mb-8 flex items-center justify-center text-gray-400 overflow-hidden rounded-lg">
                   <img 
-                    src={homeData?.profileImage || "/profile.jpg"} 
+                    src="/profile.jpg" 
                     alt="Profile" 
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "/profile.jpg";
-                    }}
                   />
                 </div>
 
