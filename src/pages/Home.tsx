@@ -149,10 +149,13 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
               {[...STATIC_SKILLS, ...STATIC_SKILLS].map((skill, index) => (
                 <div 
                   key={`${skill.name}-${index}`}
-                  className="w-24 h-24 md:w-28 md:h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-1 bg-white flex-shrink-0"
+                  className="w-24 h-24 md:w-28 md:h-28 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-2 bg-white flex-shrink-0 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <span className="font-bold text-xs md:text-sm text-center px-1 break-words w-full">{skill.name}</span>
-                  <span className="text-sm font-medium text-gray-900">{skill.level}</span>
+                  <img src={skill.icon} alt={skill.name} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                  <div className="flex flex-col items-center">
+                    <span className="font-bold text-[10px] md:text-xs text-center px-1 text-gray-800">{skill.name}</span>
+                    <span className="text-[10px] md:text-xs text-gray-500">{skill.level}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -165,17 +168,17 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
 };
 
 const STATIC_SKILLS = [
-  { name: "PowerPoint", level: "상" },
-  { name: "Excel", level: "상" },
-  { name: "Figma", level: "상" },
-  { name: "Photoshop", level: "상" },
-  { name: "HTML5", level: "상" },
-  { name: "CSS3", level: "상" },
-  { name: "JavaScript", level: "상" },
-  { name: "TypeScript", level: "중" },
-  { name: "React", level: "중" },
-  { name: "Tailwind", level: "중" },
-  { name: "Node.js", level: "중" },
+  { name: "PowerPoint", level: "상", icon: "https://cdn.simpleicons.org/microsoftpowerpoint/B7472A" },
+  { name: "Excel", level: "상", icon: "https://cdn.simpleicons.org/microsoftexcel/217346" },
+  { name: "Figma", level: "상", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+  { name: "Photoshop", level: "상", icon: "https://cdn.simpleicons.org/adobephotoshop/31A8FF" },
+  { name: "HTML5", level: "상", icon: "https://cdn.simpleicons.org/html5/E34F26" },
+  { name: "CSS3", level: "상", icon: "https://cdn.simpleicons.org/css3/1572B6" },
+  { name: "JavaScript", level: "상", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+  { name: "TypeScript", level: "중", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
+  { name: "React", level: "중", icon: "https://cdn.simpleicons.org/react/61DAFB" },
+  { name: "Tailwind", level: "중", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+  { name: "Node.js", level: "중", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
 ];
 
 export default Home;
