@@ -219,28 +219,7 @@ const Admin = () => {
     );
   }
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
 
-    const formData = new FormData();
-    formData.append('image', file);
-
-    try {
-      const response = await axios.post('/api/home/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      
-      // Assuming the server returns the relative path
-      const imageUrl = response.data.imageUrl;
-      setHomeData({ ...homeData, profileImage: imageUrl });
-    } catch (error) {
-      console.error('Image upload failed:', error);
-      alert('이미지 업로드에 실패했습니다.');
-    }
-  };
 
   const renderDashboard = () => (
     <div className="space-y-6">

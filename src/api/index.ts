@@ -45,6 +45,11 @@ export const adminApi = {
   login: (password: string) => api.post('/admin/login', { password }),
   getStats: () => api.get('/admin/stats'),
   logVisit: (data: any) => api.post('/admin/log', data),
+  uploadImage: (formData: FormData) => api.post('/home/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
 };
 
 export default api;
