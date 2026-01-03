@@ -11,6 +11,7 @@ const Home = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const scrollAccumulator = useRef(0);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -20,11 +21,13 @@ const Home = () => {
 
     const animate = () => {
       if (!isDragging && !isPaused) {
-        container.scrollLeft += 1; // Adjust speed here
-        // Infinite scroll reset
-        if (container.scrollLeft >= container.scrollWidth / 3) {
-          container.scrollLeft = 0;
+        scrollAccumulator.current += 0.5; // Slower speed
+        if (scrollAccumulator.current >= container.scrollWidth / 3) {
+          scrollAccumulator.current = 0;
         }
+        container.scrollLeft = scrollAccumulator.current;
+      } else {
+        scrollAccumulator.current = container.scrollLeft;
       }
       animationId = requestAnimationFrame(animate);
     };
