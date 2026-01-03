@@ -6,14 +6,62 @@ import { homeApi } from '../api';
 const Home = () => {
   const [homeData, setHomeData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (carouselRef.current) {
-      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animationId: number;
+
+    const animate = () => {
+      if (!isDragging && !isPaused) {
+        container.scrollLeft += 1; // Adjust speed here
+        // Infinite scroll reset
+        if (container.scrollLeft >= container.scrollWidth / 3) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, [isDragging, isPaused]);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setIsPaused(true);
+    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 2; // Scroll-fast
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollLeft - walk;
     }
-  }, [loading]); // Recalculate when loading finishes
+  };
+
+  const onTouchStart = () => setIsPaused(true);
+  const onTouchEnd = () => setIsPaused(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,8 +175,10 @@ const Home = () => {
                 {homeData?.projectContent || `KB금융그룹 웹진운영 Web PA
 경기주택도시공사 경기주거복지포털 운영 Web PL
 KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
-한국언론진흥재단 뉴스토어 시스템 구축 및 운영 Web PA
-그랜드코리아레저(주) GKL 전자사보, 블로그 제작 운영 Web PA
+한국언론진흥재단 뉴스토어 시스템 구축 Web PA
+한국언론진흥재단 뉴스토어 시스템 운영 Web PA
+그랜드코리아레저(주) GKL 전자사보 구축 Web PA
+그랜드코리아레저(주) 블로그 제작 운영 Web PA
 대통령비서실 국정현황홈페이지 사업 Web PA`}
               </div>
             </section>
@@ -147,13 +197,18 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
             <span className="text-sm md:text-base text-gray-400 font-medium">보유역량</span>
           </div>
           
-          <motion.div ref={carouselRef} className="cursor-grab overflow-hidden" whileTap={{ cursor: "grabbing" }}>
-            <motion.div 
-              drag="x" 
-              dragConstraints={{ right: 0, left: -width }} 
-              className="flex gap-4 w-max py-10 px-4"
-            >
-              {STATIC_SKILLS.map((skill, index) => (
+          <div 
+            ref={scrollRef}
+            className="relative w-full overflow-x-auto no-scrollbar py-10 px-4 cursor-grab active:cursor-grabbing"
+            onMouseDown={onMouseDown}
+            onMouseLeave={onMouseLeave}
+            onMouseUp={onMouseUp}
+            onMouseMove={onMouseMove}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            <div className="flex gap-4 w-max">
+              {[...STATIC_SKILLS, ...STATIC_SKILLS, ...STATIC_SKILLS].map((skill, index) => (
                 <div 
                   key={`${skill.name}-${index}`}
                   className="group w-24 h-24 md:w-28 md:h-28 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-3 bg-white flex-shrink-0 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110 hover:border-[var(--skill-color)]"
@@ -163,8 +218,8 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
                   <span className="font-bold text-xs md:text-sm text-center px-1 text-gray-800 transition-colors duration-300 group-hover:text-[var(--skill-color)]">{skill.name}</span>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </motion.section>
 
       </div>
