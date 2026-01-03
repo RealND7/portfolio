@@ -121,7 +121,11 @@ const Home = () => {
                   <img 
                     src={homeData?.profileImage || "/profile.jpg"} 
                     alt="Profile" 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/profile.jpg";
+                    }}
                   />
                 </div>
 
