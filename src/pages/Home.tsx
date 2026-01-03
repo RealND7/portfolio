@@ -17,11 +17,14 @@ const Home = () => {
     const container = scrollRef.current;
     if (!container) return;
 
+    // Initialize accumulator
+    scrollAccumulator.current = container.scrollLeft;
+
     let animationId: number;
 
     const animate = () => {
       if (!isDragging && !isPaused) {
-        scrollAccumulator.current += 0.5; // Slower speed
+        scrollAccumulator.current += 0.2; // Even slower speed
         if (scrollAccumulator.current >= container.scrollWidth / 3) {
           scrollAccumulator.current = 0;
         }
@@ -115,11 +118,11 @@ const Home = () => {
                 
                 {/* Image Placeholder */}
                 <div className="w-40 h-56 md:w-48 md:h-64 bg-gray-200 mb-6 md:mb-8 flex items-center justify-center text-gray-400 overflow-hidden rounded-lg">
-                  {homeData?.profileImage ? (
-                    <img src={homeData.profileImage} alt="Profile" className="w-full h-full object-cover" />
-                  ) : (
-                    "이미지 영역"
-                  )}
+                  <img 
+                    src={homeData?.profileImage || "/profile.jpg"} 
+                    alt="Profile" 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
 
                 <div className="text-center space-y-1 w-full">
