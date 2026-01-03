@@ -42,7 +42,7 @@ const Home = () => {
             <div className="h-[1px] w-8 md:w-12 bg-gray-400"></div>
             <span className="text-sm md:text-base text-gray-500 tracking-widest font-medium">PORTFOLIO</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black text-[#2B4C7E] tracking-tighter break-words leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black animate-text-shine tracking-tighter break-words leading-tight pb-2">
             {homeData?.heroTitle || "WEB PROFESSIONAL"}
           </h1>
         </motion.div>
