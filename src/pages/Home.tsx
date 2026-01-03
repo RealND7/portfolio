@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import { homeApi } from '../api';
@@ -6,6 +6,14 @@ import { homeApi } from '../api';
 const Home = () => {
   const [homeData, setHomeData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+    }
+  }, [loading]); // Recalculate when loading finishes
 
   useEffect(() => {
     const fetchData = async () => {
@@ -139,20 +147,24 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
             <span className="text-sm md:text-base text-gray-400 font-medium">보유역량</span>
           </div>
           
-          <div className="relative w-full overflow-x-auto no-scrollbar pb-4">
-            <div className="flex gap-4 w-max px-4">
+          <motion.div ref={carouselRef} className="cursor-grab overflow-hidden py-10 px-4" whileTap={{ cursor: "grabbing" }}>
+            <motion.div 
+              drag="x" 
+              dragConstraints={{ right: 0, left: -width }} 
+              className="flex gap-4 w-max"
+            >
               {STATIC_SKILLS.map((skill, index) => (
                 <div 
                   key={`${skill.name}-${index}`}
                   className="group w-24 h-24 md:w-28 md:h-28 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-3 bg-white flex-shrink-0 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110 hover:border-[var(--skill-color)]"
                   style={{ '--skill-color': `#${skill.color}` } as React.CSSProperties}
                 >
-                  <img src={skill.icon} alt={skill.name} className="w-10 h-10 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-110" />
+                  <img src={skill.icon} alt={skill.name} className="w-10 h-10 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-110 pointer-events-none" />
                   <span className="font-bold text-xs md:text-sm text-center px-1 text-gray-800 transition-colors duration-300 group-hover:text-[var(--skill-color)]">{skill.name}</span>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.section>
 
       </div>
@@ -161,8 +173,8 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
 };
 
 const STATIC_SKILLS = [
-  { name: "PowerPoint", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg", color: "B7472A" },
-  { name: "Excel", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg", color: "217346" },
+  { name: "PowerPoint", level: "상", icon: "https://img.icons8.com/color/144/microsoft-powerpoint-2019--v1.png", color: "B7472A" },
+  { name: "Excel", level: "상", icon: "https://img.icons8.com/color/144/microsoft-excel-2019--v1.png", color: "217346" },
   { name: "Figma", level: "상", icon: "https://img.icons8.com/color/96/figma--v1.png", color: "F24E1E" },
   { name: "Photoshop", level: "상", icon: "https://img.icons8.com/color/96/adobe-photoshop--v1.png", color: "31A8FF" },
   { name: "HTML5", level: "상", icon: "https://img.icons8.com/color/96/html-5--v1.png", color: "E34F26" },
