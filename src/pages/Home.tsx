@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Phone } from 'lucide-react';
 import { homeApi, skillsApi } from '../api';
 
 const Home = () => {
@@ -29,25 +30,24 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
         
         {/* Header Title */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="mb-12 md:mb-20"
         >
           <div className="flex items-center gap-4 mb-2">
-            <div className="h-[1px] w-12 bg-gray-400"></div>
-            <span className="text-gray-500 tracking-widest font-medium">PORTFOLIO</span>
+            <div className="h-[1px] w-8 md:w-12 bg-gray-400"></div>
+            <span className="text-sm md:text-base text-gray-500 tracking-widest font-medium">PORTFOLIO</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-8xl font-black text-[#2B4C7E] tracking-tighter break-words">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black text-[#2B4C7E] tracking-tighter break-words leading-tight">
             {homeData?.heroTitle || "WEB PROFESSIONAL"}
           </h1>
-          <p className="text-2xl text-gray-600 mt-4">{homeData?.heroSubtitle || "Full Stack Developer"}</p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-16">
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-16">
           {/* Left Column: Profile Card */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -56,11 +56,11 @@ const Home = () => {
             className="w-full lg:w-[380px] flex-shrink-0"
           >
             <div className="border-2 border-gray-800 rounded-[32px] overflow-hidden bg-white shadow-xl">
-              <div className="p-8 flex flex-col items-center">
-                <h2 className="text-3xl font-bold mb-8">Profile</h2>
+              <div className="p-6 md:p-8 flex flex-col items-center">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Profile</h2>
                 
                 {/* Image Placeholder */}
-                <div className="w-48 h-64 bg-gray-200 mb-8 flex items-center justify-center text-gray-400 overflow-hidden rounded-lg">
+                <div className="w-40 h-56 md:w-48 md:h-64 bg-gray-200 mb-6 md:mb-8 flex items-center justify-center text-gray-400 overflow-hidden rounded-lg">
                   {homeData?.profileImage ? (
                     <img src={homeData.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
@@ -69,14 +69,20 @@ const Home = () => {
                 </div>
 
                 <div className="text-center space-y-1 w-full">
-                  <p className="font-bold text-lg">{homeData?.nameKr || "박영선"}</p>
-                  <p className="font-bold text-lg mb-4">{homeData?.nameEn || "PARK YOUNG SUN"}</p>
-                  <p className="text-gray-600">{homeData?.email || "thewukc@gmail.com"}</p>
-                  <p className="text-gray-600">{homeData?.phone || "010 - 2990 2095"}</p>
+                  <p className="font-bold text-base md:text-lg">{homeData?.nameKr || "박영선"}</p>
+                  <p className="font-bold text-base md:text-lg mb-4">{homeData?.nameEn || "PARK YOUNG SUN"}</p>
+                  <p className="text-sm md:text-base text-gray-600">{homeData?.email || "thewukc@gmail.com"}</p>
+                  <p className="text-sm md:text-base text-gray-600">{homeData?.phone || "010 - 2990 2095"}</p>
                 </div>
               </div>
-              {/* Card Footer Decoration */}
-              <div className="h-12 bg-[#1F1F1F] mt-4 mx-4 mb-4 rounded-b-2xl rounded-t-md"></div>
+              {/* Call Button */}
+              <a 
+                href={`tel:${homeData?.phone?.replace(/[^0-9]/g, '') || "01029902095"}`}
+                className="h-12 bg-[#CCFF00] mt-4 mx-4 mb-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity cursor-pointer text-black no-underline shadow-sm"
+              >
+                <Phone className="w-5 h-5 fill-black" strokeWidth={2.5} />
+                <span className="font-bold text-lg tracking-tight">Make a Call</span>
+              </a>
             </div>
           </motion.div>
 
@@ -85,12 +91,12 @@ const Home = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex-1 space-y-16"
+            className="flex-1 space-y-12 md:space-y-16"
           >
             {/* About Me */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">{homeData?.aboutMeTitle || "About Me"}</h2>
-              <div className="space-y-2 text-lg text-gray-700 leading-relaxed whitespace-pre-line">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">{homeData?.aboutMeTitle || "About Me"}</h2>
+              <div className="space-y-2 text-base md:text-lg text-gray-700 leading-relaxed whitespace-pre-line">
                 {homeData?.aboutMeContent || `"사용자 경험을 최우선으로 생각하는 웹 개발자입니다.
 복잡한 문제를 단순하고 직관적인 인터페이스로 풀어내는 과정에서 즐거움을 느낍니다."`}
               </div>
@@ -98,11 +104,11 @@ const Home = () => {
 
             {/* Career */}
             <section>
-              <div className="flex items-baseline gap-3 mb-6">
-                <h2 className="text-3xl font-bold">{homeData?.careerTitle || "Career"}</h2>
-                <span className="text-gray-400 font-medium">경력사항</span>
+              <div className="flex items-baseline gap-3 mb-4 md:mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold">{homeData?.careerTitle || "Career"}</h2>
+                <span className="text-sm md:text-base text-gray-400 font-medium">경력사항</span>
               </div>
-              <div className="space-y-2 text-lg whitespace-pre-line">
+              <div className="space-y-2 text-base md:text-lg whitespace-pre-line">
                 {homeData?.careerContent || `(주)피씨엔 2020.12 ~ 2025.07 기획 (주)피씨엔
 서울시청 2020.03 ~ 2020.11 기획(인턴) (주)피씨엔`}
               </div>
@@ -110,11 +116,11 @@ const Home = () => {
 
             {/* Project */}
             <section>
-              <div className="flex items-baseline gap-3 mb-6">
-                <h2 className="text-3xl font-bold">{homeData?.projectTitle || "Project"}</h2>
-                <span className="text-gray-400 font-medium">업무수행 경력</span>
+              <div className="flex items-baseline gap-3 mb-4 md:mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold">{homeData?.projectTitle || "Project"}</h2>
+                <span className="text-sm md:text-base text-gray-400 font-medium">업무수행 경력</span>
               </div>
-              <div className="space-y-2 text-lg whitespace-pre-line">
+              <div className="space-y-2 text-base md:text-lg whitespace-pre-line">
                 {homeData?.projectContent || `KB금융그룹 웹진운영 Web PA
 경기주택도시공사 경기주거복지포털 운영 Web PL
 KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
@@ -131,20 +137,20 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mt-24"
+          className="mt-16 md:mt-24"
         >
-          <div className="flex items-baseline gap-3 mb-8">
-            <h2 className="text-3xl font-bold">Skills</h2>
-            <span className="text-gray-400 font-medium">보유역량</span>
+          <div className="flex items-baseline gap-3 mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Skills</h2>
+            <span className="text-sm md:text-base text-gray-400 font-medium">보유역량</span>
           </div>
           
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3 md:gap-4">
             {skills.map((skill) => (
               <div 
                 key={skill.id}
-                className="w-28 h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors cursor-default"
+                className="w-24 h-24 md:w-28 md:h-28 border border-gray-800 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors cursor-default"
               >
-                <span className="font-bold text-sm text-center px-2">{skill.name}</span>
+                <span className="font-bold text-xs md:text-sm text-center px-2">{skill.name}</span>
                 <span className="text-sm text-gray-500">{skill.level}</span>
               </div>
             ))}
