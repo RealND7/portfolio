@@ -144,13 +144,11 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
               {[...STATIC_SKILLS, ...STATIC_SKILLS].map((skill, index) => (
                 <div 
                   key={`${skill.name}-${index}`}
-                  className="w-24 h-24 md:w-28 md:h-28 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-2 bg-white flex-shrink-0 shadow-sm hover:shadow-md transition-shadow"
+                  className="group w-24 h-24 md:w-28 md:h-28 border border-gray-200 rounded-2xl flex flex-col items-center justify-center gap-3 bg-white flex-shrink-0 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110 hover:border-[var(--skill-color)]"
+                  style={{ '--skill-color': `#${skill.color}` } as React.CSSProperties}
                 >
-                  <img src={skill.icon} alt={skill.name} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
-                  <div className="flex flex-col items-center">
-                    <span className="font-bold text-[10px] md:text-xs text-center px-1 text-gray-800">{skill.name}</span>
-                    <span className="text-[10px] md:text-xs text-gray-500">{skill.level}</span>
-                  </div>
+                  <img src={skill.icon} alt={skill.name} className="w-10 h-10 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-110" />
+                  <span className="font-bold text-xs md:text-sm text-center px-1 text-gray-800 transition-colors duration-300 group-hover:text-[var(--skill-color)]">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -163,17 +161,17 @@ KB국민은행 골든라이프X 콘텐츠 제작 운영 Web PA
 };
 
 const STATIC_SKILLS = [
-  { name: "PowerPoint", level: "상", icon: "https://cdn.simpleicons.org/microsoftpowerpoint/B7472A" },
-  { name: "Excel", level: "상", icon: "https://cdn.simpleicons.org/microsoftexcel/217346" },
-  { name: "Figma", level: "상", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
-  { name: "Photoshop", level: "상", icon: "https://cdn.simpleicons.org/adobephotoshop/31A8FF" },
-  { name: "HTML5", level: "상", icon: "https://cdn.simpleicons.org/html5/E34F26" },
-  { name: "CSS3", level: "상", icon: "https://cdn.simpleicons.org/css3/1572B6" },
-  { name: "JavaScript", level: "상", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
-  { name: "TypeScript", level: "중", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
-  { name: "React", level: "중", icon: "https://cdn.simpleicons.org/react/61DAFB" },
-  { name: "Tailwind", level: "중", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
-  { name: "Node.js", level: "중", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
+  { name: "PowerPoint", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg", color: "B7472A" },
+  { name: "Excel", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg", color: "217346" },
+  { name: "Figma", level: "상", icon: "https://cdn.simpleicons.org/figma/F24E1E", color: "F24E1E" },
+  { name: "Photoshop", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", color: "31A8FF" },
+  { name: "HTML5", level: "상", icon: "https://cdn.simpleicons.org/html5/E34F26", color: "E34F26" },
+  { name: "CSS3", level: "상", icon: "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg", color: "1572B6" },
+  { name: "JavaScript", level: "상", icon: "https://cdn.simpleicons.org/javascript/F7DF1E", color: "F7DF1E" },
+  { name: "TypeScript", level: "중", icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "3178C6" },
+  { name: "React", level: "중", icon: "https://cdn.simpleicons.org/react/61DAFB", color: "61DAFB" },
+  { name: "Tailwind", level: "중", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "06B6D4" },
+  { name: "Node.js", level: "중", icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "339933" },
 ];
 
 export default Home;
