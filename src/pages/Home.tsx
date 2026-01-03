@@ -24,7 +24,7 @@ const Home = () => {
 
     const animate = () => {
       if (!isDragging && !isPaused) {
-        scrollAccumulator.current += 0.2; // Even slower speed
+        scrollAccumulator.current += 0.5; // Adjusted speed for better visibility
         if (scrollAccumulator.current >= container.scrollWidth / 3) {
           scrollAccumulator.current = 0;
         }

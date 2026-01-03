@@ -114,6 +114,22 @@ const Admin = () => {
     setPassword('');
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await adminApi.uploadImage(formData);
+      setHomeData({ ...homeData, profileImage: res.data.imageUrl });
+    } catch (error) {
+      console.error("Image upload failed", error);
+      alert("이미지 업로드 실패");
+    }
+  };
+
   const handleSaveHome = async () => {
     try {
       await homeApi.update(homeData);
